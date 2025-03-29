@@ -1,3 +1,4 @@
+/* Starry background container */
 body {
     background: linear-gradient(to bottom, #D8E2DC, #FFE5D9); /* Soft pastel gradient */
     background-size: cover;
@@ -8,6 +9,40 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    overflow: hidden; /* Prevent scrollbars from showing */
+    position: relative; /* For positioning stars */
+}
+
+/* Starry background */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Place behind all content */
+}
+
+.star {
+    position: absolute;
+    width: 4px; /* Larger size for pixel art style */
+    height: 4px; /* Larger size for pixel art style */
+    background: #FFCADD; /* Light pastel star color */
+    border-radius: 0; /* Remove rounded edges for pixel art style */
+    animation: twinkle 1.5s infinite ease-in-out;
+    opacity: 0.8; /* Make stars more visible */
+    box-shadow: 0 0 6px 2px #FFE5D9; /* Add a glowing effect */
+}
+
+/* Twinkling animation */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.5; /* Dimmer at the start and end */
+    }
+    50% {
+        opacity: 1; /* Brighter in the middle */
+    }
 }
 
 .container {
@@ -56,11 +91,14 @@ nav ul li a:hover {
 }
 
 .hero {
-    text-align: center;
-    margin: 50px auto;
+    min-height: calc(100vh - 200px); /* Adjust height to fill the viewport minus header and footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    margin: 0 auto;
     padding: 20px;
-    max-width: 90%;
-    background: rgba(244, 172, 183, 0.7);
+    background: rgba(244, 172, 183, 0.7); /* Optional: Background for the hero section */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -77,18 +115,22 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
+/* Adjust the hero-content to align text at the top and image to the left */
 .hero-content {
     display: flex;
-    align-items: center; /* Vertically align the image and text */
+    flex-direction: row; /* Place the image and text side by side */
+    align-items: flex-start; /* Align items at the top */
     gap: 20px; /* Add spacing between the image and text */
     text-align: left; /* Align text to the left */
 }
 
+/* Make the hero image larger */
 .hero-image {
-    width: 120px; /* Adjust size as needed */
-    height: auto;
-    border-radius: 50%; /* Makes the image circular */
+    width: 250px; /* Increase the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Keep the circular shape */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+    background-color: #FFCADD;
 }
 
 .cta-button {
@@ -99,20 +141,52 @@ nav ul li a:hover {
     font-size: 1em;
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid #FFCADD; /* Initial border color */
+    position: relative;
+    overflow: hidden; /* Prevent overflow */
+    animation: border-shine 1.5s infinite ease-in-out; /* Continuous border animation */
 }
+
+@keyframes border-shine {
+    0% {
+        border-color: #FFCADD; /* Start with pastel pink */
+    }
+    50% {
+        border-color: #FFFFFF; /* Transition to white */
+    }
+    100% {
+        border-color: #FFCADD; /* Return to pastel pink */
+    }
+}
+
+
 
 .cta-button:hover {
     background-color: #9D8189;
     color: #FFE5D9;
+    border: 2px solid #FFFFFF; /* White border on hover */
+}
+
+.cta-button:hover::before {
+    opacity: 1;
+    animation: shine 1s infinite; /* Add the shining animation */
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
 }
 
 footer {
     text-align: center;
-    margin-top: auto;
+    margin-top: 20px; /* Add space above the footer */
     color: #9D8189;
     background: rgba(255, 229, 217, 0.9);
-    padding: 5px 0; /* Reduced padding */
+    padding: 10px 0; /* Adjust padding for better spacing */
     font-size: 0.9em; /* Smaller font size */
 }
 
