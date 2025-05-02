@@ -6,7 +6,7 @@ permalink: /projects/
 <div class="container">
     <div class="hero">
         <h1>My Projects</h1>
-        <p>Here are some of the projects I've worked on. Each one represents a unique challenge and learning opportunity.</p>
+        <p>Here are some of the projects I've worked on during my undergraduate time.</p>
     </div>
 
     <section class="projects-section">
