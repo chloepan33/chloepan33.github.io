@@ -1,5 +1,13 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# Vite / Node
+node_modules
+dist
+dist-ssr
+*.local
+
+# macOS
+.DS_Store
+assets/.DS_Store
+
+# Editor
+.vscode
+.idea

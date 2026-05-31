@@ -1,0 +1,134 @@
+/* ── Design tokens ─────────────────────────────────────── */
+:root {
+  --bg:             #FFF5F7;
+  --pink:           #FFCADD;
+  --pink-dark:      #FF6B8B;
+  --pink-shadow:    #F0B8C8;
+  --mint:           #B5EAD7;
+  --mint-dark:      #7DCBA4;
+  --lavender:       #C7CEEA;
+  --lavender-dark:  #8D96D6;
+  --peach:          #FFDAC1;
+  --peach-dark:     #FFAC7E;
+  --text:           #2D2D2D;
+  --text-muted:     #888;
+  --border:         #2D2D2D;
+  --white:          #FFFFFF;
+
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-retro: 'VT323', monospace;
+  --font-body:  'Nunito', sans-serif;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+
+/* ── Pixel box variants ────────────────────────────────── */
+.pixel-box           { border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--pink-shadow); }
+.pixel-box-mint      { border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--mint-dark); }
+.pixel-box-lavender  { border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--lavender-dark); }
+.pixel-box-peach     { border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--peach-dark); }
+
+/* ── Pixel button ──────────────────────────────────────── */
+.pixel-btn {
+  display: inline-block;
+  font-family: var(--font-retro);
+  font-size: 20px;
+  padding: 8px 20px;
+  background: var(--white);
+  color: var(--text);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+  cursor: pointer;
+  transition: box-shadow 0.08s, transform 0.08s, background 0.08s;
+  user-select: none;
+  letter-spacing: 0.03em;
+}
+.pixel-btn:hover  { background: var(--pink); box-shadow: 2px 2px 0 var(--border); transform: translate(2px,2px); }
+.pixel-btn:active { box-shadow: none; transform: translate(4px,4px); }
+
+/* ── Scroll-reveal ─────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.15s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.25s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.35s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.45s; }
+
+/* ── Blinking cursor ───────────────────────────────────── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* ── Section entrance animation ───────────────────────── */
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Staggered item entrance ───────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-in   { animation: fadeInUp 0.4s ease both; }
+.animate-in-1 { animation-delay: 0.05s; }
+.animate-in-2 { animation-delay: 0.15s; }
+.animate-in-3 { animation-delay: 0.25s; }
+.animate-in-4 { animation-delay: 0.35s; }
+.animate-in-5 { animation-delay: 0.45s; }
+
+/* ── Typewriter text ───────────────────────────────────── */
+.typewriter-text { font-family: var(--font-retro); font-size: 22px; line-height: 1.5; color: var(--text); }
+
+/* ── Section base ──────────────────────────────────────── */
+.section {
+  min-height: 100vh;
+  padding: 80px 24px 64px;  /* top padding clears fixed nav */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.section-inner { width: 100%; max-width: 900px; }
+
+/* ── Pixel image frame ─────────────────────────────────── */
+.pixel-img-frame {
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--border);
+  image-rendering: pixelated;
+  display: inline-block;
+}
+
+/* ── Tag / badge ───────────────────────────────────────── */
+.pixel-tag {
+  display: inline-block;
+  font-family: var(--font-retro);
+  font-size: 16px;
+  padding: 1px 8px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  margin: 2px;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--pink); border: 2px solid var(--border); }
