@@ -11,3 +11,6 @@ assets/.DS_Store
 # Editor
 .vscode
 .idea
+
+# Baobao pet source originals (pre-background-removal backups)
+.baobao-originals

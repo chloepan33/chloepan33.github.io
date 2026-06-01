@@ -1,6 +1,7 @@
 import { NavigationProvider, useNav } from './context/NavigationContext';
 import StarBackground from './components/layout/StarBackground';
 import NavBar from './components/layout/NavBar';
+import BaobaoPet from './components/ui/BaobaoPet';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Projects from './components/sections/Projects';
@@ -22,6 +23,7 @@ function SiteContent() {
     <div style={{ height: '100vh', overflow: 'hidden', position: 'relative' }}>
       <StarBackground />
       <NavBar />
+      <BaobaoPet />
 
       {/* Fade wrapper — opacity controlled by fading state */}
       <div style={{
